@@ -27,3 +27,10 @@ How to deploy Django using Docker and enable HTTPS with Letsencrypt.
 
 ### Youtube link
 https://www.youtube.com/watch?v=3_ZJWlf25bY&t=128s
+
+### Command
+docker compose build
+
+### run ondev
+docker compose up
+
