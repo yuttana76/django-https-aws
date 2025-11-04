@@ -26,6 +26,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "setmeinprod")
 DEBUG = bool(int(os.environ.get("DJANGO_DEBUG", 0)))
 
 ALLOWED_HOSTS = [] if DEBUG else os.environ.get("DJANGO_ALLOWED_HOSTS").split(',')
+print(" *** DEBUG:",DEBUG)
+print(" *** ALLOWED_HOSTS:", ALLOWED_HOSTS)
 
 # Application definition
 
