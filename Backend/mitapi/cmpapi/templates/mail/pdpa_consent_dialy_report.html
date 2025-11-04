@@ -1,0 +1,104 @@
+<!-- https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#add -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+th {
+	background: #999999;
+}
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>
+</head>
+<body>
+
+<h2>{{ appName }}</h2>
+<!-- <p>Resize the browser window to see the effect. Try to remove the div element and see what happens to the table.</p> --> 
+<br>
+<div style="overflow-x:auto;">
+  <h2>All Consents</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Card number</th>
+      <th>Last change</th>
+    </tr>
+		{% for obj in consentsLast %}
+		<tr>
+				<td>{{ obj.maskedName }}</td>
+				<td>{{ obj.custCode_cardNumber }}</td>
+				<td>
+          {% if obj.updateDate != null %}
+          <p>{{obj.updateDate}}</p>
+          {% else %}
+          <p>{{ obj.createDate}}</p>
+          {% endif %}
+        </td>
+		</tr>
+		{% endfor %}
+  </table>
+</div>
+
+<br>
+<div style="overflow-x:auto;">
+  <h2>Consent (No. 2)</h2>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Card number</th>
+      <th>Consent</th>
+    </tr>
+		{% for obj in consentsNo2 %}
+		<tr>
+				<td>{{ obj.maskedName }}</td>
+				<td>{{ obj.custCode_cardNumber }}  </td>
+				<td>{{ obj.consent_description }} </td>
+		</tr>
+		{% endfor %}
+  </table>
+</div>
+
+<br>
+<div style="overflow-x:auto;">
+  <h2>All Requests </h2>
+  <table>
+    <tr>
+      <th>FullName</th>
+      <th>Reference</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Last change</th>
+    </tr>
+		{% for obj in requests %}
+		<tr>
+      <td>{{ obj.maskedName }}</td>
+      <td>{{ obj.reqRef }}</td>
+      <td>{{ obj.reqTopic }}</td>
+      <td>{{ obj.reqStatusTxt }}</td>
+      <td>
+        {% if obj.updateDate != null %}
+        <p>{{obj.updateDate}}</p>
+        {% else %}
+        <p>{{ obj.createDate}}</p>
+        {% endif %}
+      </td>
+  </tr>
+		{% endfor %}
+  </table>
+</div>
+
+
+</body>
+</html>

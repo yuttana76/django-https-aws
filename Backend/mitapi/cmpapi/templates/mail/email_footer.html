@@ -1,0 +1,13 @@
+<div style="font-family: sans-serif; font-size:14px; margin-top:10px;">
+    <br>
+        <p>อีเมลฉบับนี้เป็นการแจ้งข้อมูลจากระบบอัตโนมัติ กรุณาอย่าตอบกลับ</p>
+        <p>หากมีข้อสอบถามกรุณาติดต่อในวันจันทร์ - วันศุกร์ เวลา 8.30 – 17.00 น.ได้ที่ 
+        <span style="display: inline-block;">โทรศัพท์ {{ compContact_dpo_tel }}</span>  หรือ <span style="display: inline-block;">Email : {{ compContact_dpo_mail }}</span></p>
+    <br>
+    ขอแสดงความนับถือ  <br>
+    {{ compName }}<br>
+    <img class="img-fluid fadeInDown homepage-logo animated" width="140" height="50" src="{{compLogoLink}}" alt="">
+    {% autoescape off %} 
+    <p style="width:400px">{{ compAddr|safe }}</p>
+    {% endautoescape %}
+</div>
