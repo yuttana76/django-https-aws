@@ -10,7 +10,7 @@ services:
       - DJANGO_ALLOWED_HOSTS=${DOMAIN}
   backend:
     build:
-      context: ../Backend
+      context: ./Backend
       dockerfile: Dockerfile.nginx
     working_dir: /django/mitapi
     command: gunicorn movierater.wsgi:application --bind 0.0.0.0:8000
