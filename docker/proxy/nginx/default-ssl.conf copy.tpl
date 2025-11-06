@@ -5,10 +5,9 @@ server {
     location /.well-known/acme-challenge/ {
         root /vol/www/;
     }
-
+    
     location / {
-        uwsgi_pass app:9000;
-        include /etc/nginx/uwsgi_params;
+        return 301 https://$host$request_uri;
     }
     
 }
