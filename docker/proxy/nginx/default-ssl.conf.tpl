@@ -2,12 +2,15 @@ server {
     listen 80;
     server_name ${DOMAIN} www.${DOMAIN};
 
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log debug;
+
     location /.well-known/acme-challenge/ {
         root /vol/www/;
     }
     
     location / {
-        return 301 https://www.${DOMAIN}$request_uri;
+        return 301 https://$host$request_uri;
     }
     
 }

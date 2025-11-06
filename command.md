@@ -44,11 +44,24 @@ git clone git@github.com:yuttana76/django-https-aws.git
 ### Domain name 
 django.holidaystudio.club
 
-### Getting the first certificate
-docker-compose -f docker-compose.deploy.yml build
+holidaystudio.club
+DOMAIN=holidaystudio.club
 
+
+### Getting the first certificate
+
+1.
 docker-compose -f docker-compose.deploy.yml run --rm certbot /opt/certify-init.sh
+
 
 docker-compose -f docker-compose.deploy.yml down
 docker-compose -f docker-compose.deploy.yml build
 docker-compose -f docker-compose.deploy.yml up
+
+
+### Docker 
+To remove all Docker images, use the following command:
+
+docker rmi $(docker images -a -q)
+
+docker image prune --all
