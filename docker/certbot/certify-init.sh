@@ -9,7 +9,7 @@ until nc -z proxy 80; do
     sleep 5s & wait ${!}
 done
 
-echo "Getting certificate..."
+echo "Getting certificate...$DOMAIN "
 
 certbot certonly \
     --webroot \
