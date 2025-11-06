@@ -7,8 +7,14 @@ server {
     }
 
     location / {
+        uwsgi_pass app:9000;
+        include /etc/nginx/uwsgi_params;
+    }
+
+    location / {
         return 301 https://$host$request_uri;
     }
+    
 }
 
 server {
