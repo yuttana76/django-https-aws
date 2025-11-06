@@ -1,19 +1,3 @@
-http {
-    server_tokens off;
-    charset utf-8;
-
-    server {
-        listen 80;
-        server_name ${DOMAIN} www.${DOMAIN};
-
-        location /.well-known/acme-challenge/ {
-            root /vol/www/;
-        }
-
-        location / {
-            return 301 https://$host$request_uri;
-        }
-    }
 
     server {
         listen      443 ssl;
@@ -38,4 +22,4 @@ http {
             client_max_body_size 10M;
         }
     }
-}
+
