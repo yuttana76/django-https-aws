@@ -64,4 +64,6 @@ To remove all Docker images, use the following command:
 
 docker rmi $(docker images -a -q)
 
+docker rmi $(docker images --filter "dangling=true" -q)
+
 docker image prune --all
