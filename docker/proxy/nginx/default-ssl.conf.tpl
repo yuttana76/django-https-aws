@@ -1,10 +1,7 @@
 server {
     listen 80;
     server_name ${DOMAIN} www.${DOMAIN};
-
-    access_log /var/log/nginx/access.log;
-    error_log /var/log/nginx/error.log debug;
-
+    
     location /.well-known/acme-challenge/ {
         root /vol/www/;
     }
