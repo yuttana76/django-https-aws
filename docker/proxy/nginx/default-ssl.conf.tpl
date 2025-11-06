@@ -7,7 +7,7 @@ server {
     }
     
     location / {
-        return 301 https://$server_name$request_uri;
+        return 301 https://$host$request_uri;
     }
     
 }
@@ -16,7 +16,7 @@ server {
     
     listen 443 ssl;
 
-    server_name wwww.holidaystudio.club;
+    server_name www.holidaystudio.club;
     # server_name ${DOMAIN} www.${DOMAIN};
 
     ssl_certificate     /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
