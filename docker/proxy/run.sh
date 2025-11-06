@@ -17,5 +17,4 @@ else
   envsubst < /etc/nginx/default-ssl.conf.tpl > /etc/nginx/conf.d/default.conf
 fi
 
-# nginx-debug -g 'daemon off;'
-nginx-debug -g 'daemon on;'
+nginx-debug -g 'daemon off;'
