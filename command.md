@@ -45,8 +45,6 @@ git clone git@github.com:yuttana76/django-https-aws.git
 django.holidaystudio.club
 
 ### Getting the first certificate
-
-
 docker-compose -f docker-compose.deploy.yml run --rm certbot /opt/certify-init.sh
 
 docker-compose -f docker-compose.deploy.yml down
