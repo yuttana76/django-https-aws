@@ -13,7 +13,7 @@ echo "Getting certificate...for [${DOMAIN}]"
 
 certbot certonly \
     --webroot \
-    -w "/vol/www/" \
+    -w /vol/www/ \
     --force-renewal \
     -d "$DOMAIN" \
     --email $EMAIL \

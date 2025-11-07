@@ -25,28 +25,18 @@ services:
     environment:
       - DOMAIN=${DOMAIN}
 
-  # certbot:
-  #   build:
-  #     context: ./docker/certbot
-  #   command: echo "Skipping..."
-  #   environment:
-  #     - EMAIL=${ACME_DEFAULT_EMAIL}
-  #     - DOMAIN=${DOMAIN}
-  #   volumes:
-  #     - certbot-web:/vol/www
-  #     - certbot-certs:/etc/letsencrypt/
-  #   depends_on:
-  #     - proxy
-
   certbot:
-    image: certbot/certbot:latest
+    build:
+      context: ./docker/certbot
+    command: echo "Skipping..."
+    environment:
+      - EMAIL=${ACME_DEFAULT_EMAIL}
+      - DOMAIN=${DOMAIN}
     volumes:
-      # Mount the certbot webroot directory for challenges (read-write for certbot)
-      - certbot-web:/var/www/certbot/:rw
-      # Mount the directory where certs will be stored (read-write for certbot)
-      - certbot-certs:/etc/letsencrypt/:rw
-    # Only run this container when explicitly started or for renewal
-    entrypoint: "tail -f /dev/null"
+      - certbot-web:/vol/www
+      - certbot-certs:/etc/letsencrypt/
+    depends_on:
+      - proxy
 
 volumes:
   certbot-web:
