@@ -52,6 +52,7 @@ DOMAIN=holidaystudio.club
 
 1.
 docker-compose -f docker-compose.deploy.yml run --rm certbot /opt/certify-init.sh
+docker-compose -f docker-compose.deploy.yml run certbot /opt/certify-init.sh
 
 
 docker-compose -f docker-compose.deploy.yml down
