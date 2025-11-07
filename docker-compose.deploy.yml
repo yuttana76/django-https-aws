@@ -45,14 +45,8 @@ services:
       - certbot-web:/var/www/certbot/:rw
       # Mount the directory where certs will be stored (read-write for certbot)
       - certbot-certs:/etc/letsencrypt/:rw
-    command: >
-      sh -c "
-      trap exit TERM;
-      while :; do
-        certbot certonly --webroot --webroot-path=/var/www/certbot/ -d ${DOMAIN} -d www.${DOMAIN} --email ${ACME_DEFAULT_EMAIL} --agree-tos --no-eff-email
-        sleep 12h & wait $${!};
-      done
-      "
+    # Only run this container when explicitly started or for renewal
+    entrypoint: "tail -f /dev/null"
 
 volumes:
   certbot-web:
