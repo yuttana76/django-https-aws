@@ -6,13 +6,6 @@ server {
         root /vol/www/;
     }
 
-
-    location /api/ {
-            uwsgi_pass           ${APP_HOST}:${APP_PORT};
-            include              /etc/nginx/uwsgi_params;
-            client_max_body_size 10M;
-    }
-
     location / {
         return 301 https://$host$request_uri;
     }
