@@ -28,7 +28,7 @@ services:
   certbot:
     build:
       context: ./docker/certbot
-    command: ls /vol/www
+    command: echo "Skipping..."
     environment:
       - EMAIL=${ACME_DEFAULT_EMAIL}
       - DOMAIN=${DOMAIN}
