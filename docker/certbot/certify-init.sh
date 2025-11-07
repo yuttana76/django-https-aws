@@ -23,4 +23,7 @@ certbot certonly \
 
 echo "Listing /vol/www/ contents:"
 ls -la /vol/www/
-echo "Certificate obtained."
+echo "Certificate obtained..."
+
+echo "print log..."
+cat /var/log/letsencrypt/letsencrypt.log
