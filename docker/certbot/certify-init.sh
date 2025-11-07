@@ -14,8 +14,13 @@ echo "Getting certificate...for [${DOMAIN}]"
 certbot certonly \
     --webroot \
     --webroot-path "/vol/www/" \
+    --force-renewal \
     -d "$DOMAIN" \
     --email $EMAIL \
     --rsa-key-size 4096 \
     --agree-tos \
     --noninteractive
+
+echo "Listing /vol/www/ contents:"
+ls -la /vol/www/
+echo "Certificate obtained."
