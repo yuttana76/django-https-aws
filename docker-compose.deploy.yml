@@ -26,18 +26,31 @@ services:
       - DOMAIN=${DOMAIN}
 
   certbot:
-    build:
-      context: ./docker/certbot
-    # command: echo "Skipping..."
+    image: certbot/certbot
+    container_name: certbot
     command: certonly --webroot -w /var/www/certbot --force-renewal --email ${ACME_DEFAULT_EMAIL} -d ${DOMAIN} --agree-tos --no-eff-email
-    environment:
-      - EMAIL=${ACME_DEFAULT_EMAIL}
-      - DOMAIN=${DOMAIN}
     volumes:
       - certbot-web:/var/www/certbot
       - certbot-certs:/etc/letsencrypt/
+    environment:
+      - EMAIL=${ACME_DEFAULT_EMAIL}
+      - DOMAIN=${DOMAIN}
     depends_on:
       - proxy
+      
+  # certbot:
+  #   build:
+  #     context: ./docker/certbot
+  #   command: echo "Skipping..."
+  #   environment:
+  #     - EMAIL=${ACME_DEFAULT_EMAIL}
+  #     - DOMAIN=${DOMAIN}
+  #   volumes:
+  #     - certbot-web:/vol/www
+  #     - certbot-certs:/etc/letsencrypt/
+  #   depends_on:
+  #     - proxy
+
 
 volumes:
   certbot-web:
